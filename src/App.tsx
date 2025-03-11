@@ -7,12 +7,13 @@ import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
 import PrivacyPolicy from './components/Privacy policy/PrivacyPolicy';
 import Contacts from './components/Contacts/Contacts';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
 
   return (
     <>
-    {console.log("hello")}
+    
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,6 +21,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
