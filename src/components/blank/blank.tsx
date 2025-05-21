@@ -205,14 +205,13 @@
 
 
 //5th
-
 import { useEffect, useRef, useState } from 'react';
 
 function Blank() {
-    const editorRef = useRef(null);
-    const [fontSize, setFontSize] = useState(16);
-    const [fontFamily, setFontFamily] = useState('Calibri');
-    const [fullWindow, setFullWindow] = useState(false);
+    const editorRef = useRef<HTMLDivElement | null>(null);
+    const [fontSize, setFontSize] = useState<number>(16);
+    const [fontFamily, setFontFamily] = useState<string>('Calibri');
+    const [fullWindow, setFullWindow] = useState<boolean>(false);
 
     // Load content from localStorage on first render
     useEffect(() => {
@@ -235,18 +234,20 @@ function Blank() {
 
     useEffect(() => {
         document.body.style.overflow = fullWindow ? 'hidden' : 'auto';
-        return () => (document.body.style.overflow = 'auto');
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
     }, [fullWindow]);
 
-    const handleFontSizeChange = (delta) => {
+    const handleFontSizeChange = (delta: number) => {
         setFontSize((prev) => Math.max(10, prev + delta));
     };
 
-    const handleFontFamilyChange = (e) => {
+    const handleFontFamilyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setFontFamily(e.target.value);
     };
 
-    const editableStyle = {
+    const editableStyle: React.CSSProperties = {
         fontFamily,
         fontSize: `${fontSize}px`,
         color: 'white',
