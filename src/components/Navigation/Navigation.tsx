@@ -26,6 +26,13 @@ function Navigation() {
                         }
                         >Blog</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/blank"
+                        className={({ isActive }) =>
+                            isActive ? "underline decoration-2 underline-offset-3 transition-all duration-200" : ""
+                        }
+                        >Blank</NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>

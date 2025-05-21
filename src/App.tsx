@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import PrivacyPolicy from './components/Privacy policy/PrivacyPolicy';
 import Contacts from './components/Contacts/Contacts';
 import NotFound from './components/NotFound/NotFound';
+import Blank from './components/blank/blank';
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/blank" element={<Blank/>} />
+        <Route path="*" element={<NotFound />}  />
       </Routes>
       <Footer />
     </>
