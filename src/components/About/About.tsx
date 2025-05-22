@@ -17,6 +17,7 @@ function About() {
           <li>TypeScript</li>
           <li>Node.js</li>
           <li>Express.js</li>
+          <li>PHP</li>
           <li>Git</li>
           <li>GitHub</li>
           <li>Figma</li>
