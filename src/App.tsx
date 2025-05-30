@@ -12,8 +12,10 @@ import Blank from './components/blank/blank';
 
 function App() {
 
+
   return (
     <>
+   
     
       <Navigation />
       <Routes>
@@ -26,6 +28,7 @@ function App() {
         <Route path="*" element={<NotFound />}  />
       </Routes>
       <Footer />
+      
     </>
   )
 }

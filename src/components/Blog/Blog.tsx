@@ -1,6 +1,6 @@
 function Blog() {
   return (
-    <div className="min-h-screen w-full bg-zinc-900 text-white mx-auto px-6 py-10">
+    <div className="min-h-screen w-full  mx-auto px-6 py-10">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">The Challenges and Joys of Learning AI</h1>
         <p className="mb-6">
