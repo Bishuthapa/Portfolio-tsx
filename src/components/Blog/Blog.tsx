@@ -6,9 +6,30 @@ function Blogs(){
     <h1 className="text-4xl font-bold mb-8">Blogs</h1>
      <ul>
       <li>
-        <NavLink to="about-ai" className="hover:opacity-80">The Challenges and Joys of Learning AI</NavLink></li>
+        <NavLink
+          to="about-ai"
+          className={({ isActive }) =>
+        isActive
+          ? "text-blue-600 transition-all duration-200"
+          : "hover:font-bold transition-all duration-200"
+          }
+        >
+          The Challenges and Joys of Learning AI
+        </NavLink>
+      </li>
 
-        <li><NavLink to="Future-of-computer" className="hover:opacity-80">Future of Computer</NavLink></li>
+      <li>
+        <NavLink
+          to="Future-of-computer"
+          className={({ isActive }) =>
+        isActive
+          ? "text-blue-600 transition-all duration-200"
+          : "hover:font-bold transition-all duration-200"
+          }
+        >
+          Future of Computer
+        </NavLink>
+      </li>
      </ul>
      <div>
         <Outlet/>

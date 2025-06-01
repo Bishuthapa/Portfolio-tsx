@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Blogs from './components/Blog/Blog'; // <-- Blogs is the parent
 import AI from './components/Contents/runCcode'; // <-- Child of Blogs
+import FutureComputer from './components/Contents/FutureOfComputer';
 import Footer from './components/Footer/Footer';
 import PrivacyPolicy from './components/Privacy policy/PrivacyPolicy';
 import Contacts from './components/Contacts/Contacts';
@@ -21,7 +22,7 @@ function App() {
         {/* NESTED BLOG ROUTES */}
         <Route path="/blog" element={<Blogs />}>
           <Route path="about-ai" element={<AI />} />
-          <Route path="about-computer" element={<AI />} />
+          <Route path="Future-of-computer" element={<FutureComputer />} />
         </Route>
 
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
