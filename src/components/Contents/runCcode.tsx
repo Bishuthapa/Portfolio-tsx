@@ -3,7 +3,7 @@ function AI() {
     <div className="min-h-screen w-full  mx-auto px-6 py-10">
       <div className="max-w-4xl mx-auto">
          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">Written on: Feb 9, 2025</p>
-        <h1 className="text-4xl font-bold mb-8">The Challenges and Joys of Learning AI</h1>
+        <h1 className="text-2xl font-bold mb-8">Challenges and Joys of Learning AI</h1>
         <p className="mb-6">
           Artificial Intelligence (AI) is one of the most exciting fields to explore in today’s rapidly advancing technological world. It has the potential to revolutionize industries, solve complex problems, and make our lives easier. But learning AI, as fascinating as it is, comes with its fair share of challenges. At the same time, the sense of accomplishment and joy it brings is unmatched.
         </p>

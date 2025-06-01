@@ -3,7 +3,7 @@ function Blogs(){
   return(
     
   <div className="h-auto w-full mx-auto px-6 py-10 ">
-    <h1 className="text-4xl font-bold mb-8">Blogs</h1>
+    <h1 className="text-4xl font-bold mb-6">Blogs</h1>
      <ul>
       <li>
         <NavLink
@@ -14,7 +14,7 @@ function Blogs(){
           : "hover:font-bold transition-all duration-200"
           }
         >
-          The Challenges and Joys of Learning AI
+          Challenges and Joys of Learning AI
         </NavLink>
       </li>
 
