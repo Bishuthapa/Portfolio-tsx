@@ -207,6 +207,7 @@
 //5th
 import { useEffect, useRef, useState } from 'react';
 
+
 function Blank() {
     const editorRef = useRef<HTMLDivElement | null>(null);
     const [fontSize, setFontSize] = useState<number>(16);
@@ -263,6 +264,7 @@ function Blank() {
     };
 
     return (
+       
         <div className="w-full bg-zinc-900 min-h-screen p-4">
             {/* Toolbar */}
             {!fullWindow && (
