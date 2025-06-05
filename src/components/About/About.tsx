@@ -4,9 +4,7 @@ function About() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">About Me</h1>
         <p className="mt-4 text-lg">
-          I&apos;m a passionate developer with experience in building web
-          applications using modern technologies. As a self-taught developer, I
-          love learning new things.{" "}
+          I&apos;m a passionate, self-taught developer with experience in building web applications using modern technologies. I thrive on learning new skills and continuously improving my craft.{" "}
         </p>{" "}
         <br />
         <h2 className="text-2xl font-semibold mb-4"> Technologies I am using </h2>
