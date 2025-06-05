@@ -14,7 +14,10 @@ import Totalbackend from '/Contents/Totalbackend.mdx';
 import { useState, createContext , useContext } from 'react';
 
 
-const ThemeContext  = createContext()
+const ThemeContext = createContext<{ isDark: boolean; toogleTheme: () => void }>({
+  isDark: false,
+  toogleTheme: () => {},
+})
 
 export const useTheme = () => {
 const context = useContext(ThemeContext);
