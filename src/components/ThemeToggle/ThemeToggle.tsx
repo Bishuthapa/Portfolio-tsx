@@ -1,15 +1,16 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../context/ThemeContext';
+import { useTheme } from '../../App';
+
+
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { isDark, toogleTheme } = useTheme();
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={toogleTheme}
       className="rounded-full p-2 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-900"
     >
-      {theme === 'light' ? (
+      { !isDark? (
         // 🌙 Moon Icon
         <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />

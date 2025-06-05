@@ -3,9 +3,9 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle"; // Adjust path if needed
 
 function Navigation() {
   return (
-<nav className="transition-colors duration-500 bg-white dark:bg-black text-gray-900 dark:text-white">
+<nav className=" bg-white dark:bg-black text-gray-900 dark:text-white">
 
-<div className="flex justify-between items-center p-6 max-w-screen-xl mx-auto w-full font-bold text-2xl text-gray-900 dark:text-white transition-colors duration-500">
+<div className="flex justify-between items-center p-6 max-w-screen-xl mx-auto w-full font-bold text-2xl text-gray-900 dark:text-white transition-colors duration-100">
 
         {/* Left: Brand */}
         <ul className="mr-15">

@@ -7,7 +7,7 @@ function Blogs() {
       <ul>
         <li>
           <NavLink
-            to="about-ai"
+            to="ai"
             className={({ isActive }) =>
               isActive
                 ? "text-blue-600 transition-all duration-200"
