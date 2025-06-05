@@ -1,218 +1,12 @@
-// 1st// function Blank(){
-//     return <>
-//     (
-//         <div className="h-auto w-full bg-zinc-900">
-//             <div
-//                 className="mx-auto my-10 shadow-lg p-[60px_80px] font-sans text-base relative overflow-auto"
-//                 style={{
-//                     width: '794px',
-//                     height: '1123px',
-//                     fontFamily: 'Calibri, Arial, sans-serif',
-//                     color: 'white'
-//                 }}
-//                 contentEditable
-//                 suppressContentEditableWarning
-//             >
-//         <p>Hello</p>
-//         {/* Add, edit, and delete functionality is enabled by contentEditable.
-//             For more advanced controls, you can add toolbar buttons below. */}
-//     </div>
-
-//          </div>
-//     )
-    
-//     </>
-// }
-
-// export default Blank
-
-//2nd// function Blank() {
-//     const editableStyle = {
-//         width: '794px',
-//         height: '1123px',
-//         fontFamily: 'Calibri, Arial, sans-serif',
-//         color: 'white',
-//     };
-
-//     return (
-//         <div className="w-full bg-zinc-900 min-h-screen">
-//             <div
-//                 className="mx-auto my-10 shadow-lg p-[60px_80px] font-sans text-base relative overflow-auto"
-//                 style={editableStyle}
-//                 contentEditable
-//                 suppressContentEditableWarning
-//             >
-//                 <p>Hello</p>
-//                 {/* Content is editable. You can extend this with a rich text toolbar or formatting buttons. */}
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Blank;
-
-//3rd
-// import { useState } from 'react';
-
-// function Blank() {
-//     const [fontSize, setFontSize] = useState(16);
-//     const [fontFamily, setFontFamily] = useState('Calibri');
-
-//     const handleFontSizeChange = (delta) => {
-//         setFontSize((prevSize) => Math.max(10, prevSize + delta)); // min 10px
-//     };
-
-//     const handleFontFamilyChange = (e) => {
-//         setFontFamily(e.target.value);
-//     };
-
-//     const editableStyle = {
-//         width: '794px',
-//         height: '1123px',
-//         fontFamily: fontFamily,
-//         fontSize: `${fontSize}px`,
-//         color: 'white',
-//     };
-
-//     return (
-//         <div className="w-full bg-zinc-900 min-h-screen p-4">
-//             {/* Toolbar */}
-//             <div className="flex justify-center items-center gap-4 mb-6 text-white">
-//                 <button
-//                     onClick={() => handleFontSizeChange(-2)}
-//                     className="bg-zinc-700 px-4 py-1 rounded hover:bg-zinc-600"
-//                 >
-//                     A-
-//                 </button>
-//                 <span className="text-lg">Font Size: {fontSize}px</span>
-//                 <button
-//                     onClick={() => handleFontSizeChange(2)}
-//                     className="bg-zinc-700 px-4 py-1 rounded hover:bg-zinc-600"
-//                 >
-//                     A+
-//                 </button>
-
-//                 <select
-//                     value={fontFamily}
-//                     onChange={handleFontFamilyChange}
-//                     className="bg-zinc-700 text-white px-3 py-1 rounded"
-//                 >
-//                     <option value="Calibri">Calibri</option>
-//                     <option value="Arial">Arial</option>
-//                     <option value="Times New Roman">Times New Roman</option>
-//                     <option value="Georgia">Georgia</option>
-//                     <option value="Courier New">Courier New</option>
-//                 </select>
-//             </div>
-
-//             {/* Editable Area */}
-//             <div
-//                 className="mx-auto shadow-lg p-[60px_80px] font-sans text-base relative overflow-auto bg-zinc-800"
-//                 style={editableStyle}
-//                 contentEditable
-//                 suppressContentEditableWarning
-//             >
-//                 <p>Hello</p>
-//                 {/* Start editing this document. Font and size controls are above. */}
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Blank;
-
-//4th 
-// import { useState } from 'react';
-
-// function Blank() {
-//     const [fontSize, setFontSize] = useState(16);
-//     const [fontFamily, setFontFamily] = useState('Calibri');
-//     const [fullWindow, setFullWindow] = useState(false);
-
-//     const handleFontSizeChange = (delta) => {
-//         setFontSize((prev) => Math.max(10, prev + delta));
-//     };
-
-//     const handleFontFamilyChange = (e) => {
-//         setFontFamily(e.target.value);
-//     };
-
-//     const toggleFullWindow = () => {
-//         setFullWindow((prev) => !prev);
-//     };
-
-//     const editableStyle = {
-//         fontFamily,
-//         fontSize: `${fontSize}px`,
-//         color: 'white',
-//         width: fullWindow ? '100%' : '794px',
-//         height: fullWindow ? '100vh' : '1123px',
-//     };
-
-//     return (
-//         <div className="w-full bg-zinc-900 min-h-screen p-4">
-//             {/* Toolbar */}
-//             <div className="flex flex-wrap justify-center items-center gap-4 mb-6 text-white">
-//                 <button
-//                     onClick={() => handleFontSizeChange(-2)}
-//                     className="bg-zinc-700 px-4 py-1 rounded hover:bg-zinc-600"
-//                 >
-//                     A-
-//                 </button>
-//                 <span className="text-lg">Font Size: {fontSize}px</span>
-//                 <button
-//                     onClick={() => handleFontSizeChange(2)}
-//                     className="bg-zinc-700 px-4 py-1 rounded hover:bg-zinc-600"
-//                 >
-//                     A+
-//                 </button>
-
-//                 <select
-//                     value={fontFamily}
-//                     onChange={handleFontFamilyChange}
-//                     className="bg-zinc-700 text-white px-3 py-1 rounded"
-//                 >
-//                     <option value="Calibri">Calibri</option>
-//                     <option value="Arial">Arial</option>
-//                     <option value="Times New Roman">Times New Roman</option>
-//                     <option value="Georgia">Georgia</option>
-//                     <option value="Courier New">Courier New</option>
-//                 </select>
-
-//                 <button
-//                     onClick={toggleFullWindow}
-//                     className="bg-blue-600 px-4 py-1 rounded hover:bg-blue-500"
-//                 >
-//                     {fullWindow ? 'A4 Mode' : 'Full Window'}
-//                 </button>
-//             </div>
-
-//             {/* Editable Area */}
-//             <div
-//                 className="mx-auto shadow-lg p-[60px_80px] font-sans relative overflow-auto bg-zinc-800"
-//                 style={editableStyle}
-//                 contentEditable
-//                 suppressContentEditableWarning
-//             >
-//                 <p>Hello</p>
-//                 {/* Editable content goes here */}
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Blank;
-
-
-//5th
 import { useEffect, useRef, useState } from 'react';
-
 
 function Blank() {
     const editorRef = useRef<HTMLDivElement | null>(null);
     const [fontSize, setFontSize] = useState<number>(16);
     const [fontFamily, setFontFamily] = useState<string>('Calibri');
     const [fullWindow, setFullWindow] = useState<boolean>(false);
+    const [bgColor, setBgColor] = useState<string>('#18181b');
+    const [textColor, setTextColor] = useState<string>('white');
 
     // Load content from localStorage on first render
     useEffect(() => {
@@ -248,23 +42,30 @@ function Blank() {
         setFontFamily(e.target.value);
     };
 
+    const handleBgColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setBgColor(e.target.value);
+    };
+
+    const handleTextColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTextColor(e.target.value);
+    };
+
     const editableStyle: React.CSSProperties = {
         fontFamily,
         fontSize: `${fontSize}px`,
-        color: 'white',
+        color: textColor,
+        backgroundColor: bgColor,
         width: fullWindow ? '100vw' : '794px',
         height: fullWindow ? '100vh' : '1123px',
         position: fullWindow ? 'fixed' : 'static',
         top: fullWindow ? 0 : 'auto',
         left: fullWindow ? 0 : 'auto',
         zIndex: fullWindow ? 40 : 'auto',
-        backgroundColor: '#18181b',
         overflow: 'auto',
         padding: '60px 80px',
     };
 
     return (
-       
         <div className="w-full bg-zinc-900 min-h-screen p-4">
             {/* Toolbar */}
             {!fullWindow && (
@@ -295,6 +96,16 @@ function Blank() {
                         <option value="Courier New">Courier New</option>
                     </select>
 
+                    <label className="text-sm">
+                        BG Color:
+                        <input type="color" value={bgColor} onChange={handleBgColorChange} className="ml-2" />
+                    </label>
+
+                    <label className="text-sm">
+                        Text Color:
+                        <input type="color" value={textColor} onChange={handleTextColorChange} className="ml-2" />
+                    </label>
+
                     <button
                         onClick={toggleFullWindow}
                         className="bg-blue-600 px-4 py-1 rounded hover:bg-blue-500"
@@ -318,7 +129,7 @@ function Blank() {
             <div
                 ref={editorRef}
                 onInput={handleInput}
-                className={`${!fullWindow ? 'mx-auto' : ''} shadow-lg font-sans relative bg-zinc-800`}
+                className={`${!fullWindow ? 'mx-auto' : ''} shadow-lg font-sans relative`}
                 style={editableStyle}
                 contentEditable
                 suppressContentEditableWarning
