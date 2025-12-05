@@ -8,7 +8,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toogleTheme}
-      className="rounded-full p-2 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-900"
+      className="rounded-full p-2 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-900 h-full w-full"
     >
       { !isDark? (
         // 🌙 Moon Icon
