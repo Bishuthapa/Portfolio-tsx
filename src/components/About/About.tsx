@@ -14,7 +14,7 @@ function About() {
           <li>JavaScript</li>
           <li>TypeScript</li>
           <li>Node.js</li>
-          <li>Express.js</li>
+          <li>Atlas MongoDB</li>
           <li>PHP</li>
           <li>Git</li>
           <li>GitHub</li>
