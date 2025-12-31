@@ -16,6 +16,7 @@ function About() {
           <li>Node.js</li>
           <li>>.NET</li>
           <li>Atlas MongoDB</li>
+          <li>nVim</li>
           <li>PHP</li>
           <li>Git</li>
           <li>GitHub</li>
