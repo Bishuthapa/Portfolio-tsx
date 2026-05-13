@@ -31,26 +31,26 @@ function Navigation() {
             </li>
             <li>
               <NavLink
-                to="/blog"
+                to="/projects"
                 className={({ isActive }) =>
                   isActive
                     ? "underline decoration-2 underline-offset-4 transition-all duration-200"
                     : "hover:underline"
                 }
               >
-                Blog
+                Projects
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/blank"
+                to="/contacts"
                 className={({ isActive }) =>
                   isActive
                     ? "underline decoration-2 underline-offset-4 transition-all duration-200"
                     : "hover:underline"
                 }
               >
-                Blank
+                Contacts
               </NavLink>
             </li>
           </ul>

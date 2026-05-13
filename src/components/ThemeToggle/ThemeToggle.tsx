@@ -3,11 +3,11 @@ import { useTheme } from '../../App';
 
 
 export default function ThemeToggle() {
-  const { isDark, toogleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <button
-      onClick={toogleTheme}
+      onClick={toggleTheme}
       className="rounded-full p-2 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-900 h-full w-full"
     >
       { !isDark? (
