@@ -9,20 +9,13 @@ function About() {
         <br />
         <h2 className="text-2xl font-semibold mb-4"> Technologies I am using </h2>
         <ul className="list-disc list-inside">
-          <li>React</li>
           <li>Next.js</li>
-          <li>JavaScript</li>
           <li>TypeScript</li>
           <li>Node.js</li>
           <li>.NET</li>
-          <li>Atlas MongoDB</li>
           <li>nVim</li>
-          <li>PHP</li>
           <li>Git</li>
           <li>GitHub</li>
-          <li>Figma</li>
-          <li>Blender</li>
-          <li>DaVinci Resolve</li>
         </ul>
       </div>
     </div>
