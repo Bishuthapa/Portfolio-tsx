@@ -19,7 +19,7 @@ function Footer() {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink
+                            <a
                                 href="https://bishesh0.com.np/blog"
                                 className={({ isActive }) =>
                                     isActive
@@ -28,7 +28,7 @@ function Footer() {
                                 }
                             >
                                 Blog
-                            </NavLink>
+                            </a>
                         </li>
                         <li>
                             <NavLink
