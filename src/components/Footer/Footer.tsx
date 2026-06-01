@@ -20,7 +20,7 @@ function Footer() {
                         </li>
                         <li>
                             <NavLink
-                                to="/blog"
+                                href="https://bishesh0.com.np/blog"
                                 className={({ isActive }) =>
                                     isActive
                                         ? "underline decoration-2 underline-offset-7 transition-all duration-200"
