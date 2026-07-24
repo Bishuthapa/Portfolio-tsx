@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bishesh-portfolio
 
-## Getting Started
+Minimalist, monospace, dark-first personal site. Built with Astro + Tailwind v4.
+Inspired by [nischal-dahal.com.np](https://nischal-dahal.com.np/), with additions:
+live GitHub activity feed, reading time, OG/Twitter meta, sitemap, view transitions.
 
-First, run the development server:
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev       # local dev at http://localhost:4321
+npm run build     # production build → ./dist
+npm run preview   # preview the build locally
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Make it yours
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **`src/config.ts`** — name, bio, projects, links, uses. Single source of truth.
+2. **`astro.config.mjs`** + **`src/config.ts`** — set your real `site` / `url` domain.
+3. **`src/content/blog/*.mdx`** — delete the starter posts, write your own. Frontmatter: `title`, `date`, `description`, `tags`, `draft`.
+4. **`public/resume.pdf`** — drop in your real resume (placeholder note there now).
+5. **`public/og.png`** — 1200×630 social preview image (placeholder note there now).
+6. **Projects with `repo: "owner/name"`** get live star counts. `repo: null` = no badge.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Optional: raise GitHub API limit
 
-## Learn More
+Build-time star/activity fetches use the unauthenticated API (60 req/hr). If you
+have many repos, set a token:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# .env
+GITHUB_TOKEN=ghp_xxx   # a classic PAT with public_repo scope is enough
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy (Cloudflare Pages)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Build command: `npm run build`
+- Output dir: `dist`
+- Framework preset: Astro
 
-## Deploy on Vercel
+Or any static host (Vercel / Netlify / GitHub Pages) — it's a static build.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Path | What |
+|---|---|
+| `/` | home — hero, projects, dotfiles, latest writing |
+| `/blog` · `/blog/[slug]` | blog index + posts |
+| `/activity` | live GitHub activity (build-time) |
+| `/links` · `/use` | link list + uses/gear |
+| `/blog.rss` · `/feed.json` · `/llms.txt` | feeds + LLM summary |
+| `/sitemap-index.xml` | sitemap (auto) |
