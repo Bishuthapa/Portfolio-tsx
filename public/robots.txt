@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bishesh.example.com/sitemap-index.xml
+Sitemap:https://bishesh-thapa.com.np/sitemap-index.xml

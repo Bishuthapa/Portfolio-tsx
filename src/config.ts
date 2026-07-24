@@ -10,7 +10,7 @@ export const SITE = {
   description:
     'Full-stack engineer. I build ERP systems, developer tools, and things that stay out of the way.',
   email: 'bishuthapa570@gmail.com',
-  url: 'https://bishesh.example.com', // TODO: match astro.config.mjs site
+  url: 'https://bishesh-thapa.com.np', // TODO: match astro.config.mjs site
 } as const;
 
 export const BIO = [
