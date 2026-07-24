@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { USES } from '../config';
+---
+<BaseLayout title="uses — Bishesh Thapa" description="Tools, gear, and software I use daily.">
+  <h1 class="mb-2 text-xl font-semibold lowercase">uses</h1>
+  <p class="mb-8 text-sm text-fg-muted">tools and gear i reach for daily.</p>
+  <div class="space-y-8">
+    {Object.entries(USES).map(([group, items]) => (
+      <section>
+        <h2 class="mb-2 text-xs uppercase tracking-widest text-fg-muted">{group}</h2>
+        <ul class="space-y-1">
+          {items.map((item) => (
+            <li class="text-sm">— {item}</li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import ThemeScript from '../components/ThemeScript.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  type?: 'website' | 'article';
+}
+const {
+  title = SITE.title,
+  description = SITE.description,
+  type = 'website',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url).href;
+const ogImage = new URL('/og.png', Astro.site ?? SITE.url).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/blog.rss" />
+    <link rel="alternate" type="application/json"    title={SITE.name} href="/feed.json" />
+
+    <ThemeScript />
+    <ClientRouter />
+  </head>
+  <body class="min-h-dvh">
+    <main class="mx-auto w-full max-w-2xl px-5 py-12 sm:py-16">
+      <Header />
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>

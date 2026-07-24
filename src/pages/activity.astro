@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+
+// Build-time fetch of recent public GitHub activity.
+type Event = { type: string; repo: { name: string }; created_at: string; payload: any };
+let events: Event[] = [];
+try {
+  const token = import.meta.env.GITHUB_TOKEN;
+  const res = await fetch(`https://api.github.com/users/${SITE.githubUser}/events/public?per_page=30`, {
+    headers: {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'bishesh-portfolio',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  });
+  if (res.ok) events = await res.json();
+} catch { /* offline build — page still renders */ }
+
+function describe(e: Event): string | null {
+  switch (e.type) {
+    case 'PushEvent':         return `pushed ${e.payload.commits?.length ?? 0} commit(s) to`;
+    case 'CreateEvent':       return `created ${e.payload.ref_type} in`;
+    case 'PullRequestEvent':  return `${e.payload.action} a pull request in`;
+    case 'IssuesEvent':       return `${e.payload.action} an issue in`;
+    case 'WatchEvent':        return `starred`;
+    case 'ForkEvent':         return `forked`;
+    case 'ReleaseEvent':      return `released in`;
+    default:                  return null;
+  }
+}
+
+const items = events
+  .map((e) => ({ text: describe(e), repo: e.repo.name, date: new Date(e.created_at) }))
+  .filter((i) => i.text)
+  .slice(0, 20);
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { day: '2-digit', month: 'short' });
+---
+<BaseLayout title="activity — Bishesh Thapa" description="Recent public GitHub activity.">
+  <h1 class="mb-2 text-xl font-semibold lowercase">activity</h1>
+  <p class="mb-8 text-sm text-fg-muted">recent public github activity (rebuilt on each deploy).</p>
+  {items.length === 0 ? (
+    <p class="text-sm text-fg-muted">no recent activity, or GitHub rate-limited the build.</p>
+  ) : (
+    <ul class="space-y-2.5">
+      {items.map((i) => (
+        <li class="flex items-baseline gap-3 text-sm">
+          <span class="shrink-0 text-xs text-fg-muted tabular-nums">{fmt(i.date)}</span>
+          <span class="text-fg-muted">
+            {i.text}{' '}
+            <a href={`https://github.com/${i.repo}`} target="_blank" rel="noopener noreferrer"
+               class="text-fg hover:text-accent-fg transition-colors">{i.repo}</a>
+          </span>
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout>

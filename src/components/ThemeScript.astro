@@ -1,0 +1,16 @@
+---
+// Runs before paint — resolves theme from localStorage or system pref so there
+// is NO dark-mode flash (the #1 thing that makes clones look worse than source).
+---
+<script is:inline>
+  (function () {
+    try {
+      const stored = localStorage.getItem('theme');
+      const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = stored === 'light' || stored === 'dark' ? stored : system;
+      document.documentElement.dataset.theme = theme;
+    } catch (_) {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  })();
+</script>

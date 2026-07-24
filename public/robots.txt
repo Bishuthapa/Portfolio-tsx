@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bishesh.example.com/sitemap-index.xml

@@ -1,0 +1,26 @@
+---
+import { Star, ArrowUpRight } from 'lucide-astro';
+import type { Project } from '../config';
+interface Props { project: Project; stars: number; }
+const { project, stars } = Astro.props;
+const external = project.href.startsWith('http');
+---
+<a
+  href={project.href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  class="group flex items-baseline justify-between gap-3 border-b border-border/60 py-2.5 -mx-2 px-2 rounded-md hover:bg-bg-subtle transition-colors"
+>
+  <span class="flex items-baseline gap-2 min-w-0">
+    <span class="font-medium text-fg group-hover:text-accent-fg transition-colors shrink-0">{project.name}</span>
+    <span class="text-fg-muted text-sm truncate">{project.desc}</span>
+  </span>
+  <span class="flex items-center gap-2 shrink-0 text-xs text-fg-muted">
+    {stars >= 0 && (
+      <span class="inline-flex items-center gap-0.5" title={`${stars} stars`}>
+        <Star size={12} /> {stars}
+      </span>
+    )}
+    <ArrowUpRight size={13} class="opacity-0 group-hover:opacity-100 transition-opacity" />
+  </span>
+</a>

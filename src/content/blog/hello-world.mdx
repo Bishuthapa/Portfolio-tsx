@@ -1,0 +1,28 @@
+---
+title: "Building this site with Astro"
+date: 2026-07-20
+description: "Why I rebuilt my portfolio with Astro — zero JS by default, MDX blog, and a Lighthouse-100 budget."
+tags: ["astro", "web"]
+---
+
+This is a starter post. Delete it and write your own.
+
+## Why Astro
+
+Astro ships **zero JavaScript by default**. Every interactive bit — the theme
+toggle here — is an island, so the rest of the page stays static HTML. That's
+how this site loads instantly.
+
+## What's inside
+
+- MDX blog posts (this file)
+- Live GitHub star counts, fetched at build time
+- RSS + JSON feeds generated from the same content
+- A no-flash dark/light theme toggle
+
+```ts
+// stars are fetched once, at build, and cached
+const stars = await getStars(PROJECTS.map((p) => p.repo));
+```
+
+Edit `src/config.ts` to make the site yours.

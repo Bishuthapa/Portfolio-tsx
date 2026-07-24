@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LINKS } from '../config';
+import { ArrowUpRight } from 'lucide-astro';
+---
+<BaseLayout title="links — Bishesh Thapa" description="Where to find me.">
+  <h1 class="mb-8 text-xl font-semibold lowercase">links</h1>
+  <div>
+    {LINKS.map((link) => (
+      <a href={link.href} target="_blank" rel="noopener noreferrer"
+         class="group flex items-center justify-between border-b border-border/60 py-3 -mx-2 px-2 rounded-md hover:bg-bg-subtle transition-colors">
+        <span class="text-sm group-hover:text-accent-fg transition-colors">{link.label}</span>
+        <ArrowUpRight size={14} class="text-fg-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+      </a>
+    ))}
+  </div>
+</BaseLayout>

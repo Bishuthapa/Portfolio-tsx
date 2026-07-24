@@ -1,0 +1,2 @@
+Replace this by dropping your real resume at: public/resume.pdf
+(then delete this .README.txt file). The footer links to /resume.pdf.

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { getStars } from '../lib/github';
+import { SITE, BIO, PROJECTS, DOTFILES } from '../config';
+import { ArrowUpRight } from 'lucide-astro';
+
+const stars = await getStars(PROJECTS.map((p) => p.repo));
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+---
+<BaseLayout>
+  <!-- Hero -->
+  <section class="mb-14">
+    <h1 class="text-2xl font-semibold lowercase tracking-tight">{SITE.name}</h1>
+    <div class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed">
+      {BIO.map((line) => <p>{line}</p>)}
+    </div>
+    <p class="mt-4 text-sm">
+      <a href={`mailto:${SITE.email}`} class="text-accent-fg hover:underline underline-offset-4">{SITE.email}</a>
+    </p>
+  </section>
+
+  <!-- Projects -->
+  <section class="mb-14">
+    <h2 class="mb-3 text-xs uppercase tracking-widest text-fg-muted">projects</h2>
+    <div>
+      {PROJECTS.map((p) => (
+        <ProjectCard project={p} stars={p.repo ? (stars[p.repo] ?? -1) : -1} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Dotfiles -->
+  <section class="mb-14">
+    <h2 class="mb-3 text-xs uppercase tracking-widest text-fg-muted">dotfiles</h2>
+    <a href={DOTFILES.href} target="_blank" rel="noopener noreferrer"
+       class="group inline-flex items-baseline gap-2 text-sm hover:text-accent-fg transition-colors">
+      <span class="font-medium">dotfiles</span>
+      <span class="text-fg-muted">{DOTFILES.desc}</span>
+      <ArrowUpRight size={13} class="opacity-0 group-hover:opacity-100 transition-opacity" />
+    </a>
+  </section>
+
+  <!-- Writing -->
+  <section>
+    <div class="mb-3 flex items-baseline justify-between">
+      <h2 class="text-xs uppercase tracking-widest text-fg-muted">writing</h2>
+      <a href="/blog" class="text-xs text-fg-muted hover:text-fg transition-colors">all posts →</a>
+    </div>
+    {posts.length === 0 ? (
+      <p class="text-sm text-fg-muted">no posts yet.</p>
+    ) : (
+      <div>
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`}
+             class="group flex items-baseline justify-between gap-3 border-b border-border/60 py-2.5 -mx-2 px-2 rounded-md hover:bg-bg-subtle transition-colors">
+            <span class="text-sm text-fg group-hover:text-accent-fg transition-colors truncate">{post.data.title}</span>
+            <span class="shrink-0 text-xs text-fg-muted">{fmt(post.data.date)}</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

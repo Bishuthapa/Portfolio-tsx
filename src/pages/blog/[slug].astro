@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { ArrowLeft } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// crude reading time — improvement over source: reader sees length up front
+const words = post.body?.split(/\s+/).length ?? 0;
+const mins = Math.max(1, Math.round(words / 200));
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+<BaseLayout title={`${post.data.title} — Bishesh Thapa`} description={post.data.description} type="article">
+  <a href="/blog" class="mb-8 inline-flex items-center gap-1 text-xs text-fg-muted hover:text-fg transition-colors">
+    <ArrowLeft size={13} /> back
+  </a>
+
+  <article>
+    <header class="mb-8">
+      <h1 class="text-xl font-semibold leading-snug">{post.data.title}</h1>
+      <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-fg-muted">
+        <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+        <span>·</span>
+        <span>{mins} min read</span>
+        {post.data.tags.length > 0 && (
+          <>
+            <span>·</span>
+            <span>{post.data.tags.map((t) => `#${t}`).join(' ')}</span>
+          </>
+        )}
+      </div>
+    </header>
+    <div class="prose text-sm">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import { Sun, Moon, Monitor } from 'lucide-astro';
+---
+<div class="inline-flex items-center gap-1 rounded-md border border-border p-0.5" role="group" aria-label="Theme">
+  <button data-theme-set="light"  class="theme-btn" aria-label="Light theme"><Sun size={14} /></button>
+  <button data-theme-set="dark"   class="theme-btn" aria-label="Dark theme"><Moon size={14} /></button>
+  <button data-theme-set="system" class="theme-btn" aria-label="System theme"><Monitor size={14} /></button>
+</div>
+
+<style>
+  .theme-btn {
+    display: inline-flex;
+    padding: 0.3rem;
+    border-radius: 4px;
+    color: var(--fg-muted);
+    cursor: pointer;
+    transition: color 0.12s, background 0.12s;
+  }
+  .theme-btn:hover { color: var(--fg); background: var(--bg-subtle); }
+  .theme-btn[aria-pressed="true"] { color: var(--fg); background: var(--bg-subtle); }
+</style>
+
+<script>
+  function apply(mode: string) {
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const theme = mode === 'system' ? system : mode;
+    document.documentElement.dataset.theme = theme;
+    if (mode === 'system') localStorage.removeItem('theme');
+    else localStorage.setItem('theme', mode);
+    mark(mode);
+  }
+  function mark(mode: string) {
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-set]').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === mode));
+    });
+  }
+  function init() {
+    const stored = localStorage.getItem('theme');
+    mark(stored === 'light' || stored === 'dark' ? stored : 'system');
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-set]').forEach((b) => {
+      b.addEventListener('click', () => apply(b.dataset.themeSet!));
+    });
+  }
+  init();
+  document.addEventListener('astro:after-swap', init); // re-bind after view transitions
+</script>
