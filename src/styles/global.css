@@ -2,8 +2,7 @@
 @import "@fontsource-variable/geist-mono";
 
 /* -------------------------------------------------------------------------
-   Design tokens — oklch, zero-saturation, dark-first (inspired by
-   nischal-dahal.com.np). Light theme is the inverse. Switched via
+   Design tokens — oklch, zero-saturation, dark-first Light theme is the inverse. Switched via
    data-theme on <html>, resolved before paint by ThemeScript.
    ------------------------------------------------------------------------- */
 :root {
