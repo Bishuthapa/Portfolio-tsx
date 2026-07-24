@@ -9,7 +9,7 @@ export const SITE = {
   title: 'Bishesh Thapa — full-stack engineer',
   description:
     'Full-stack engineer. I build ERP systems, developer tools, and things that stay out of the way.',
-  email: 'bishesh.thapa@bisage.com.np',
+  email: 'bishuthapa570@gmail.com',
   url: 'https://bishesh.example.com', // TODO: match astro.config.mjs site
 } as const;
 
@@ -39,7 +39,7 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
-  { name: 'bisage-erp',   desc: 'multi-tenant ERP platform — .NET 10 + Vue 3',      href: 'https://github.com/Bishuthapa', repo: null },
+  { name: 'erp',   desc: 'multi-tenant ERP platform — .NET 10 + Vue 3',      href: 'https://github.com/Bishuthapa', repo: null },
   { name: 'esewa-gateway', desc: 'eSewa payment gateway integration for .NET',       href: 'https://github.com/Bishuthapa/Esewa-gateway-integration', repo: 'Bishuthapa/Esewa-gateway-integration' },
   { name: 'videotrimmer', desc: 'browser-side video trimming, zero upload',          href: 'https://github.com/Bishuthapa/videotrimer', repo: 'Bishuthapa/videotrimer' },
   { name: 'yt-downloader', desc: 'minimal youtube video downloader',                 href: 'https://github.com/Bishuthapa/youtube-video-downloader', repo: 'Bishuthapa/youtube-video-downloader' },
@@ -55,9 +55,9 @@ export const DOTFILES = {
 // curated links for /links
 export const LINKS = [
   { label: 'GitHub',   href: 'https://github.com/Bishuthapa' },
-  { label: 'Email',    href: 'mailto:bishesh.thapa@bisage.com.np' },
-  { label: 'LinkedIn', href: '#' }, // TODO
-  { label: 'X',        href: '#' }, // TODO
+  { label: 'Email',    href: 'mailto:bishuthapa570@gmail.com' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bishu-t-53b239277/' },
+  { label: 'X',        href: 'https://x.com/BishuTh46746183' }, 
 ] as const;
 
 // /use page — gear & software

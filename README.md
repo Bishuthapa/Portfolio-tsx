@@ -1,7 +1,6 @@
 # bishesh-portfolio
 
 Minimalist, monospace, dark-first personal site. Built with Astro + Tailwind v4.
-Inspired by [nischal-dahal.com.np](https://nischal-dahal.com.np/), with additions:
 live GitHub activity feed, reading time, OG/Twitter meta, sitemap, view transitions.
 
 ## Commands
