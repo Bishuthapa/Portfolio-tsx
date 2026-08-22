@@ -4,13 +4,24 @@
 ---
 <script is:inline>
   (function () {
-    try {
-      const stored = localStorage.getItem('theme');
-      const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      const theme = stored === 'light' || stored === 'dark' ? stored : system;
-      document.documentElement.dataset.theme = theme;
-    } catch (_) {
-      document.documentElement.dataset.theme = 'dark';
+    function resolveTheme() {
+      try {
+        const stored = localStorage.getItem('theme');
+        const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        return stored === 'light' || stored === 'dark' ? stored : system;
+      } catch (_) {
+        return 'dark';
+      }
     }
+    function applyTheme(doc) {
+      doc.documentElement.dataset.theme = resolveTheme();
+    }
+    applyTheme(document);
+    document.addEventListener('astro:before-swap', (event) => {
+      applyTheme(event.newDocument);
+    });
+    document.addEventListener('astro:after-swap', () => {
+      applyTheme(document);
+    });
   })();
 </script>
